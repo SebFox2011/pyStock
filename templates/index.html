@@ -39,5 +39,35 @@
     </table>
     <a class="btn btn-primary"href="/add">Ajouter une entrée</a>
 </div>
+<hr>
+<div class="container">
+    <h1>Liste des commandes</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col-lg">Id</th>
+            <th scope="col-lg">Nom</th>
+            <th scope="col-lg">Status</th>
+            <th scope="col-lg">Date de création</th>
+            <th scope="col-lg">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in orders %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.created_at }}</td>
+                <td>
+                    <a class="btn btn-danger" href="/order/delete/{{ item.id }}">Supprimer</a>
+                    <a class="btn btn-warning" href="/order/edit/{{ item.id }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary"href="/order/add">Ajouter une entrée</a>
+</div>
 </body>
 </html>

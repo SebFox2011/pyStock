@@ -24,4 +24,10 @@ class Stock:
         db.session.delete(article)
         db.session.commit()
 
+    def updateArticleById(self,article,qte):
+        entry = Stock_Entry.query.filter_by(article_id=id).first()
+        article = Article.query.filter_by(id=id).first()
+
+        db.session.commit()
+
 stock = Stock()

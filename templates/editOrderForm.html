@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editOrderForm</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Modifier une commande</h1>
+    <form method="post" action="/order/edit/{{ article.id }}">
+        <div class="form-group">
+            <label for="articleName">Nom de la commande</label>
+            <input type="text" class="form-control" id="orderName" aria-describedby="orderName"
+                   placeholder="Nom de la commande" name="orderName" value="{{ article.nom }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <a class="btn btn-warning" href="/">Retour</a>
+    </form>
+</div>
+</body>
+</html>

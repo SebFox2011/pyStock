@@ -19,3 +19,9 @@ class Article(db.Model):
         prix = int(input("Quel est le prix: "))
         article = Article(nom, description, prix)
         return article  # retourné pour pouvoir gérer le stock
+
+    def update(self, values):
+        self.nom = values['articleName']
+        self.description = values['articleDescription']
+        self.prix = values['articlePrix']
+        db.session.commit()
