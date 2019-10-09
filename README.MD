@@ -13,3 +13,14 @@ Pip3 install Flask
 créer un nouveau projet Flask
 
 ## Installation de SQLAlchemy pour SQL LITE
+pip install Flask-SQLAlchemy
+
+suppression des data dans dataInit car la base de données gère les données maintenant
+.
+
+Taper les commandes suivantes dans le shell de Flask
+Flask shell
+from app import db
+db.create_all()
+
+

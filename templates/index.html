@@ -18,16 +18,21 @@
             <th scope="col-lg">Description</th>
             <th scope="col-lg">Prix</th>
             <th scope="col-lg">Quantité</th>
+            <th scope="col-lg">Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for item in liste %}
             <tr>
-                <td>{{ item.Article.id }}</td>
-                <td>{{ item.Article.nom }}</td>
-                <td>{{ item.Article.description }}</td>
-                <td>{{ item.Article.prix }} €</td>
+                <td>{{ item.article.id }}</td>
+                <td>{{ item.article.nom }}</td>
+                <td>{{ item.article.description }}</td>
+                <td>{{ item.article.prix }} €</td>
                 <td>{{ item.qte }}</td>
+                <td>
+                    <a class="btn btn-danger" href="/article/delete/{{ item.article.id }}">Supprimer</a>
+                    <a class="btn btn-warning" href="/article/edit/{{ item.article.id }}">Modifier</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
