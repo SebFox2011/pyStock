@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Test</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Gestion du stock</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col-lg">Id</th>
+            <th scope="col-lg">Nom</th>
+            <th scope="col-lg">Description</th>
+            <th scope="col-lg">Prix</th>
+            <th scope="col-lg">Quantité</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in liste %}
+            <tr>
+                <td>{{ item.Article.id }}</td>
+                <td>{{ item.Article.nom }}</td>
+                <td>{{ item.Article.description }}</td>
+                <td>{{ item.Article.prix }} €</td>
+                <td>{{ item.qte }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary"href="/add">Ajouter une entrée</a>
+</div>
+</body>
+</html>
