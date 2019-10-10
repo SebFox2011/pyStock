@@ -18,11 +18,6 @@ from classes.stock import stock
 from classes.order import Order
 from classes.order_Entry import Order_Entry
 
-@app.route('/user/<username>')  ## <str:username> ou <int:agev>
-def hello_user(username):
-    return 'Hello {}'.format(username)
-
-
 @app.route('/')
 def index():
     orders = Order.query.all()
@@ -32,6 +27,13 @@ def index():
 @app.route('/article/delete/<id>')
 def delete(id):
     stock.deleteArticleById(id)
+    return redirect(url_for('index'))
+
+@app.route('/order/delete/<id>')
+def deleteOrder(id):
+    order = Order.query.filter_by(id=id).first()
+    db.session.delete(order)
+    db.session.commit()
     return redirect(url_for('index'))
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -74,6 +76,19 @@ def edit_article(id):
     else:
         # Récupération de l'article
         article.update(request.form)
+
+        return redirect(url_for('index'))
+
+@app.route('/order/edit/<id>', methods=['GET','POST'])
+def edit_order(id):
+    # Récupération de l'article
+    order = Order.query.filter_by(id=id).first()
+
+    if request.method == 'GET':
+        return render_template('editOrderForm.html',order=order)
+    else:
+        # Récupération de l'article
+        order.update(request.form)
 
         return redirect(url_for('index'))
 

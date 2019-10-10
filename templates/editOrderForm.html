@@ -10,11 +10,11 @@
 <body>
 <div class="container">
     <h1>Modifier une commande</h1>
-    <form method="post" action="/order/edit/{{ article.id }}">
+    <form method="post" action="/order/edit/{{ order.id }}">
         <div class="form-group">
             <label for="articleName">Nom de la commande</label>
             <input type="text" class="form-control" id="orderName" aria-describedby="orderName"
-                   placeholder="Nom de la commande" name="orderName" value="{{ article.nom }}">
+                   placeholder="{{ order.name }}" name="orderName" value="{{ order.name }}">
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
         <a class="btn btn-warning" href="/">Retour</a>

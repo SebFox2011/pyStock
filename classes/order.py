@@ -10,13 +10,6 @@ class Order(db.Model):
     status = db.Column(db.String(20), nullable=False)# ongoing, completed, error
     created_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
 
-    def printInfos(self):
-        print('[{}] Order {} - {} € : \n{}'.format(self.id, self.nom, self.prix, self.description))
-
-    @classmethod
-    def createOrder(self):
-        nom = input("Quel est le nom de la commande: ")
-        description = input("Quel est la description de l'article: ")
-        prix = int(input("Quel est le prix: "))
-        order = Order(nom, description, prix)
-        return order  # retourné pour pouvoir gérer le stock
+    def update(self, values):
+        self.name = values['orderName']
+        db.session.commit()
